@@ -1,0 +1,7 @@
+# cache
+.DS_Store
+
+# gitignore
+.env
+.env.ce
+.vscode

@@ -125,23 +125,13 @@ IMG_PROD           = $(IMG)
 
 podman-dev:
 	@echo "🦭  Building dev container…"
-	podman build --ssh default --platform=linux/amd64 --squash \
+	podman build --ssh default --build-arg IBMCLOUD_PLUGINS=$(IBMCLOUD_PLUGINS) --platform=linux/amd64 --squash \
 	             -t $(IMG_DEV) .
 
 podman:
 	@echo "🦭  Building container using ubi9-minimal…"
-	podman build --ssh default --platform=linux/amd64 --squash \
+	podman build --ssh default --build-arg IBMCLOUD_PLUGINS=$(IBMCLOUD_PLUGINS) --platform=linux/amd64 --squash \
 	             -t $(IMG_PROD) .
-	podman images $(IMG_PROD)
-
-podman-prod:
-	@echo "🦭  Building production container from Containerfile.lite (ubi-micro → scratch)…"
-	podman build --ssh default \
-	             --platform=linux/amd64 \
-	             --squash \
-	             -f Containerfile.lite \
-	             -t $(IMG_PROD) \
-	             .
 	podman images $(IMG_PROD)
 
 ## --------------------  R U N   (HTTP)  ---------------------------------------
@@ -243,11 +233,11 @@ IMG_DOCKER_PROD = $(IMG):latest
 
 docker-dev:
 	@echo "🐋  Building dev Docker image…"
-	docker build --platform=linux/amd64 -t $(IMG_DOCKER_DEV) .
+	docker build --build-arg IBMCLOUD_PLUGINS=$(IBMCLOUD_PLUGINS) --platform=linux/amd64 -t $(IMG_DOCKER_DEV) .
 
 docker:
 	@echo "🐋  Building production Docker image…"
-	docker build --platform=linux/amd64 -t $(IMG_DOCKER_PROD) -f Containerfile .
+	docker build --build-arg IBMCLOUD_PLUGINS=$(IBMCLOUD_PLUGINS) --platform=linux/amd64 -t $(IMG_DOCKER_PROD) -f Containerfile .
 
 ## --------------------  R U N   (HTTP)  ---------------------------------------
 docker-run:
@@ -454,14 +444,18 @@ ibmcloud-deploy:
 	@if ibmcloud ce application get --name $(IBMCLOUD_CODE_ENGINE_APP) > /dev/null 2>&1; then \
 		echo "🔁 Updating existing app…"; \
 		ibmcloud ce application update --name $(IBMCLOUD_CODE_ENGINE_APP) \
-			--image $(IBMCLOUD_IMAGE_NAME) \
+			--image private.$(IBMCLOUD_IMAGE_NAME) \
 			--cpu $(IBMCLOUD_CPU) --memory $(IBMCLOUD_MEMORY) \
+			--env-from-secret $(IBMCLOUD_ENV_SECRET) \
+			--env-from-configmap $(IBMCLOUD_ENV_CONFIGMAP) \
 			--registry-secret $(IBMCLOUD_REGISTRY_SECRET); \
 	else \
 		echo "🆕 Creating new app…"; \
 		ibmcloud ce application create --name $(IBMCLOUD_CODE_ENGINE_APP) \
-			--image $(IBMCLOUD_IMAGE_NAME) \
+			--image private.$(IBMCLOUD_IMAGE_NAME) \
 			--cpu $(IBMCLOUD_CPU) --memory $(IBMCLOUD_MEMORY) \
+			--env-from-secret $(IBMCLOUD_ENV_SECRET) \
+			--env-from-configmap $(IBMCLOUD_ENV_CONFIGMAP) \
 			--port 4444 \
 			--registry-secret $(IBMCLOUD_REGISTRY_SECRET); \
 	fi
