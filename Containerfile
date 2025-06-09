@@ -9,26 +9,39 @@ ARG IBMCLOUD_PLUGINS
 
 # Install required system packages
 RUN microdnf update -y && \
-    microdnf install -y tar gzip && \
+    microdnf install -y tar-1.34 gzip-1.12 && \
     microdnf clean all
+
+COPY ./start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 # Download, install, and configure IBM Cloud CLI
 RUN curl -L "https://download.clis.test.cloud.ibm.com/ibm-cloud-cli/${IBMCLOUD_VERSION}/IBM_Cloud_CLI_${IBMCLOUD_VERSION}_${IBMCLOUD_ARCH}.tar.gz" -o /tmp/ibmcloud.tar.gz && \
     tar -xf /tmp/ibmcloud.tar.gz -C /tmp && \
     mv /tmp/Bluemix_CLI/bin/ibmcloud /usr/local/bin/ && \
-    chmod +x /usr/local/bin/ibmcloud && \
-    if [ -n "${IBMCLOUD_PLUGINS}" ]; then \
-        ibmcloud plugin install ${IBMCLOUD_PLUGINS//,/ } -f -q || :; \
-    else \
-        echo "No specific plugins specified, installing all..." && \
-        ibmcloud plugin install --all -f -q || :; \
-    fi && \
-    rm -rf /tmp/ibmcloud.tar.gz /tmp/Bluemix_CLI
+    rm -rf /tmp/ibmcloud.tar.gz /tmp/Bluemix_CLI && \
+    chmod +x /usr/local/bin/ibmcloud
+
+# Update permissions for non-root user
+RUN chown -R 1001:0 /app && \
+    chmod -R g=u /app
 
 EXPOSE 4444
 
-COPY ./start.sh /usr/local/start.sh
-RUN chmod +x /usr/local/start.sh
+WORKDIR /app
+
+# Run as non-root user
+USER 1001
+
+# Install IBM Cloud CLI and plugins
+## Ignores hadolint rule because "|| true" is specifically set to prevent image build failure on plugin warning messages.
+#hadolint ignore=SC2015
+RUN if [ -n "${IBMCLOUD_PLUGINS}" ]; then \
+        ibmcloud plugin install $IBMCLOUD_PLUGINS -f -q || true; \
+    else \
+        echo "No specific plugins specified, installing all..." && \
+        ibmcloud plugin install --all -f -q || true; \
+    fi
 
 # Start the application
-CMD ["/usr/local/start.sh"]
+CMD ["./start.sh"]
