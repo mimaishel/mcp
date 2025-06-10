@@ -28,11 +28,8 @@ help:
 # 🛡️  SECURITY & PACKAGE SCANNING
 # =============================================================================
 # help: 🛡️ SECURITY & PACKAGE SCANNING
-# help: trivy                - Scan container image for CVEs (HIGH/CRIT). Needs podman socket enabled
+# help: trivy                - Scan container image for CVEs (HIGH/CRIT).
 
-# @systemctl --user enable --now podman.socket
-# @echo "🔎  trivy vulnerability scan…"
-# @trivy --format table --severity HIGH,CRITICAL image localhost/$(PROJECT_NAME)/$(PROJECT_NAME)
 .PHONY: trivy
 TRIVY_IMAGE ?= $(IMG):latest
 trivy:
@@ -46,7 +43,7 @@ trivy:
 	trivy --format table image --severity HIGH,CRITICAL --input "$$TARBALL"; \
 	rm -f "$$TARBALL"
 
-# help: dockle               - Lint the built container image via tarball (no daemon/socket needed)
+# help: dockle               - Lint the built container image via tarball.
 .PHONY: dockle
 DOCKLE_IMAGE ?= $(IMG):latest         # $(PROJECT_NAME)/$(PROJECT_NAME):latest from your build
 dockle:
