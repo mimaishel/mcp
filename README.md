@@ -9,9 +9,9 @@ To build, run, and deploy this project, you will need the following installed:
 *   `make`
 *   Containerization tool: `podman` or `docker`
 *   `curl` (for testing)
-*   `hadolint` (for linting Containerfiles)
-*   `dockle` (for linting container images)
-*   `trivy` (for scanning container images for vulnerabilities)
+*   [`hadolint`](https://github.com/hadolint/hadolint?tab=readme-ov-file#install) (for linting Containerfiles)
+*   [`dockle`](https://github.com/goodwithtech/dockle) (for linting container images)
+*   [`trivy`](https://trivy.dev/v0.60/getting-started/installation/) (for scanning container images for vulnerabilities)
 *   IBM Cloud CLI with `container-registry` and `code-engine` plugins
 
 ## Building the Container Image
