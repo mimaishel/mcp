@@ -28,16 +28,24 @@ help:
 # 🛡️  SECURITY & PACKAGE SCANNING
 # =============================================================================
 # help: 🛡️ SECURITY & PACKAGE SCANNING
-# help: trivy                - Scan container image for CVEs (HIGH/CRIT). Needs podman socket enabled
-.PHONY: trivy
-trivy:
-	@systemctl --user enable --now podman.socket
-	@echo "🔎  trivy vulnerability scan…"
-	@trivy --format table --severity HIGH,CRITICAL image localhost/$(PROJECT_NAME)/$(PROJECT_NAME)
+# help: trivy                - Scan container image for CVEs (HIGH/CRIT).
 
-# help: dockle               - Lint the built container image via tarball (no daemon/socket needed)
+.PHONY: trivy
+TRIVY_IMAGE ?= $(IMG):latest
+trivy:
+	# Pick docker or podman—whichever is on PATH
+	@CONTAINER_CLI=$$(command -v docker || command -v podman) ; \
+	[ -n "$$CONTAINER_CLI" ] || { echo '❌  docker/podman not found.'; exit 1; }; \
+	TARBALL=$$(mktemp /tmp/$(PROJECT_NAME)-trivy.tar) ; \
+	echo "📦  Saving image to $$TARBALL..." ; \
+	"$$CONTAINER_CLI" save $(TRIVY_IMAGE) -o "$$TARBALL" || { rm -f "$$TARBALL"; exit 1; }; \
+	echo "🔎  trivy vulnerability scan…"; \
+	trivy --format table image --severity HIGH,CRITICAL --input "$$TARBALL"; \
+	rm -f "$$TARBALL"
+
+# help: dockle               - Lint the built container image via tarball.
 .PHONY: dockle
-DOCKLE_IMAGE ?= $(IMG):latest         # mcpgateway/mcpgateway:latest from your build
+DOCKLE_IMAGE ?= $(IMG):latest         # $(PROJECT_NAME)/$(PROJECT_NAME):latest from your build
 dockle:
 	@echo "🔎  dockle scan (tar mode) on $(DOCKLE_IMAGE)…"
 	@command -v dockle >/dev/null || { \
@@ -46,8 +54,8 @@ dockle:
 	# Pick docker or podman—whichever is on PATH
 	@CONTAINER_CLI=$$(command -v docker || command -v podman) ; \
 	[ -n "$$CONTAINER_CLI" ] || { echo '❌  docker/podman not found.'; exit 1; }; \
-	TARBALL=$$(mktemp /tmp/$(PROJECT_NAME)-dockle-XXXXXX.tar) ; \
-	echo "📦  Saving image to $$TARBALL…" ; \
+	TARBALL=$$(mktemp /tmp/$(PROJECT_NAME)-dockle.tar) ; \
+	echo "📦  Saving image to $$TARBALL..." ; \
 	"$$CONTAINER_CLI" save $(DOCKLE_IMAGE) -o "$$TARBALL" || { rm -f "$$TARBALL"; exit 1; }; \
 	echo "🧪  Running Dockle…" ; \
 	dockle --no-color --exit-code 1 --exit-level warn --input "$$TARBALL" ; \
