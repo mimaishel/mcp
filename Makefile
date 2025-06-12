@@ -2,7 +2,10 @@
 #   🐍 IBMCloud MCP Server - Makefile
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
-# Author: Chris Mitchell
+# Author: Chris Mitchell, Mihai Criveti, Ryan Edgell
+# Attribution: Modified version from original awesome 
+#   [MCP Context Forge Makefile](https://github.com/IBM/mcp-context-forge) 
+#   by Mihai Criveti under Apache v2 License
 # Description: Build & automation helpers for the IBMCloud MCP Server project.
 # Usage: run `make` or `make help` to view available targets
 #
