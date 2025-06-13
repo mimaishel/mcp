@@ -121,9 +121,9 @@ containerfile-update:
 # help: 🦭 PODMAN CONTAINER BUILD & RUN
 # help: podman-dev           - Build development container image
 # help: podman               - Build production container image
-# help: podman-run           - Run the container on HTTP  (port 4444)
-# help: podman-run-shell     - Run the container on HTTP  (port 4444) and start a shell
-# help: podman-run-ssl       - Run the container on HTTPS (port 4444, self-signed)
+# help: podman-run           - Run the container on HTTP  (port 4141)
+# help: podman-run-shell     - Run the container on HTTP  (port 4141) and start a shell
+# help: podman-run-ssl       - Run the container on HTTPS (port 4141, self-signed)
 # help: podman-stop          - Stop & remove the container
 # help: podman-test          - Quick curl smoke-test against the container
 # help: podman-logs          - Follow container logs (⌃C to quit)
@@ -152,9 +152,9 @@ podman-run:
 	-podman rm   $(PROJECT_NAME) 2>/dev/null || true
 	podman run --name $(PROJECT_NAME) \
 		--env-file=.env \
-		-p 4444:4444 \
+		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl --fail http://localhost:4444/health || exit 1" \
+		--health-cmd="curl --fail http://localhost:4141/health || exit 1" \
 		--health-interval=1m --health-retries=3 \
 		--health-start-period=30s --health-timeout=10s \
 		-d $(IMG_PROD)
@@ -164,7 +164,7 @@ podman-run-shell:
 	@echo "🚀  Starting podman container shell…"
 	podman run --name $(PROJECT_NAME)-shell \
 		--env-file=.env \
-		-p 4444:4444 \
+		-p 4141:4141 \
 		--memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
 		-it --rm $(IMG_PROD) \
 		sh -c 'env; exec sh'
@@ -180,9 +180,9 @@ podman-run-ssl: certs
 		-e CERT_FILE=certs/cert.pem \
 		-e KEY_FILE=certs/key.pem \
 		-v $(PWD)/certs:/app/certs:ro,Z \
-		-p 4444:4444 \
+		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl -k --fail https://localhost:4444/health || exit 1" \
+		--health-cmd="curl -k --fail https://localhost:4141/health || exit 1" \
 		--health-interval=1m --health-retries=3 \
 		--health-start-period=30s --health-timeout=10s \
 		-d $(IMG_PROD)
@@ -194,8 +194,8 @@ podman-stop:
 
 podman-test:
 	@echo "🔬  Testing podman endpoint…"
-	@echo "• HTTP  -> curl  http://localhost:4444/system/test"
-	@echo "• HTTPS -> curl -k https://localhost:4444/system/test"
+	@echo "• HTTP  -> curl  http://localhost:4141/system/test"
+	@echo "• HTTPS -> curl -k https://localhost:4141/system/test"
 
 podman-logs:
 	@echo "📜  Streaming podman logs (press Ctrl+C to exit)…"
@@ -231,8 +231,8 @@ podman-shell:
 # help: 🐋 DOCKER BUILD & RUN
 # help: docker-dev           - Build development Docker image
 # help: docker               - Build production Docker image
-# help: docker-run           - Run the container on HTTP  (port 4444)
-# help: docker-run-ssl       - Run the container on HTTPS (port 4444, self-signed)
+# help: docker-run           - Run the container on HTTP  (port 4141)
+# help: docker-run-ssl       - Run the container on HTTPS (port 4141, self-signed)
 # help: docker-stop          - Stop & remove the container
 # help: docker-test          - Quick curl smoke-test against the container
 # help: docker-logs          - Follow container logs (⌃C to quit)
@@ -257,9 +257,9 @@ docker-run:
 	-docker rm   $(PROJECT_NAME) 2>/dev/null || true
 	docker run --name $(PROJECT_NAME) \
 		--env-file=.env \
-		-p 4444:4444 \
+		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl --fail http://localhost:4444/health || exit 1" \
+		--health-cmd="curl --fail http://localhost:4141/health || exit 1" \
 		--health-interval=1m --health-retries=3 \
 		--health-start-period=30s --health-timeout=10s \
 		-d $(IMG_DOCKER_PROD)
@@ -276,9 +276,9 @@ docker-run-ssl: certs
 		-e CERT_FILE=certs/cert.pem \
 		-e KEY_FILE=certs/key.pem \
 		-v $(PWD)/certs:/app/certs:ro \
-		-p 4444:4444 \
+		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl -k --fail https://localhost:4444/health || exit 1" \
+		--health-cmd="curl -k --fail https://localhost:4141/health || exit 1" \
 		--health-interval=1m --health-retries=3 \
 		--health-start-period=30s --health-timeout=10s \
 		-d $(IMG_DOCKER_PROD)
@@ -290,8 +290,8 @@ docker-stop:
 
 docker-test:
 	@echo "🔬  Testing Docker endpoint…"
-	@echo "• HTTP  -> curl  http://localhost:4444/system/test"
-	@echo "• HTTPS -> curl -k https://localhost:4444/system/test"
+	@echo "• HTTP  -> curl  http://localhost:4141/system/test"
+	@echo "• HTTPS -> curl -k https://localhost:4141/system/test"
 
 
 docker-logs:
@@ -467,7 +467,7 @@ ibmcloud-deploy:
 			--cpu $(IBMCLOUD_CPU) --memory $(IBMCLOUD_MEMORY) \
 			--env-from-secret $(IBMCLOUD_ENV_SECRET) \
 			--env-from-configmap $(IBMCLOUD_ENV_CONFIGMAP) \
-			--port 4444 \
+			--port 4141 \
 			--registry-secret $(IBMCLOUD_REGISTRY_SECRET); \
 	fi
 

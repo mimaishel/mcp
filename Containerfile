@@ -26,7 +26,7 @@ RUN curl -L "https://download.clis.test.cloud.ibm.com/ibm-cloud-cli/${IBMCLOUD_V
 RUN chown -R 1001:0 /app && \
     chmod -R g=u /app
 
-EXPOSE 4444
+EXPOSE 4141
 
 WORKDIR /app
 

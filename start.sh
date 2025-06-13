@@ -4,7 +4,7 @@
 
 case "$IBMCLOUD_MCP_TRANSPORT" in
     sse)
-        transport_mode="http://0.0.0.0:4444"
+        transport_mode="http://0.0.0.0:4141"
         ;;
     *)
         transport_mode="stdio"
