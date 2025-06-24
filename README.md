@@ -25,7 +25,7 @@ IBM Cloud CLI Binaries enabled with MCP features are for different operating sys
 ## Containerized MCP Servers
 
 Scripts to build containers are located in the `/src` folder. 
-Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](src/README.md)
+Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](src/core/README.md)
 
 ## Usage
 
