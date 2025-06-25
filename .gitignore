@@ -1,7 +1,7 @@
 # cache
-.DS_Store
+**/.DS_Store
 
 # gitignore
-.env
-.env.ce
-.vscode
+**/.env
+**/.env.ce
+**/.vscode

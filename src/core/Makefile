@@ -119,7 +119,6 @@ containerfile-update:
 # 🦭 PODMAN CONTAINER BUILD & RUN
 # =============================================================================
 # help: 🦭 PODMAN CONTAINER BUILD & RUN
-# help: podman-dev           - Build development container image
 # help: podman               - Build production container image
 # help: podman-run           - Run the container on HTTP  (port 4141)
 # help: podman-run-shell     - Run the container on HTTP  (port 4141) and start a shell
@@ -128,16 +127,11 @@ containerfile-update:
 # help: podman-test          - Quick curl smoke-test against the container
 # help: podman-logs          - Follow container logs (⌃C to quit)
 
-.PHONY: podman-dev podman podman-run podman-run-shell podman-run-ssl podman-stop podman-test
+.PHONY: podman podman-run podman-run-shell podman-run-ssl podman-stop podman-test
 
 IMG               ?= $(PROJECT_NAME)/$(PROJECT_NAME)
 IMG_DEV            = $(IMG)-dev
 IMG_PROD           = $(IMG)
-
-podman-dev:
-	@echo "🦭  Building dev container…"
-	podman build --ssh default --build-arg IBMCLOUD_PLUGINS=$(IBMCLOUD_PLUGINS) --platform=linux/amd64 --squash \
-	             -t $(IMG_DEV) .
 
 podman:
 	@echo "🦭  Building container using ubi9-minimal…"
@@ -154,9 +148,9 @@ podman-run:
 		--env-file=.env \
 		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl --fail http://localhost:4141/health || exit 1" \
-		--health-interval=1m --health-retries=3 \
-		--health-start-period=30s --health-timeout=10s \
+		--health-cmd="/app/healthcheck.sh" \
+		--health-interval=30s --health-retries=3 \
+		--health-start-period=10s --health-timeout=10s \
 		-d $(IMG_PROD)
 	@sleep 2 && podman logs $(PROJECT_NAME) | tail -n +1
 
@@ -182,9 +176,9 @@ podman-run-ssl: certs
 		-v $(PWD)/certs:/app/certs:ro,Z \
 		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl -k --fail https://localhost:4141/health || exit 1" \
-		--health-interval=1m --health-retries=3 \
-		--health-start-period=30s --health-timeout=10s \
+		--health-cmd="/app/healthcheck.sh" \
+		--health-interval=30s --health-retries=3 \
+		--health-start-period=10s --health-timeout=10s \
 		-d $(IMG_PROD)
 	@sleep 2 && podman logs $(PROJECT_NAME) | tail -n +1
 
@@ -229,7 +223,6 @@ podman-shell:
 # 🐋 DOCKER BUILD & RUN
 # =============================================================================
 # help: 🐋 DOCKER BUILD & RUN
-# help: docker-dev           - Build development Docker image
 # help: docker               - Build production Docker image
 # help: docker-run           - Run the container on HTTP  (port 4141)
 # help: docker-run-ssl       - Run the container on HTTPS (port 4141, self-signed)
@@ -237,14 +230,10 @@ podman-shell:
 # help: docker-test          - Quick curl smoke-test against the container
 # help: docker-logs          - Follow container logs (⌃C to quit)
 
-.PHONY: docker-dev docker docker-run docker-run-ssl docker-stop docker-test
+.PHONY: docker docker-run docker-run-ssl docker-stop docker-test
 
 IMG_DOCKER_DEV  = $(IMG)-dev:latest
 IMG_DOCKER_PROD = $(IMG):latest
-
-docker-dev:
-	@echo "🐋  Building dev Docker image…"
-	docker build --build-arg IBMCLOUD_PLUGINS=$(IBMCLOUD_PLUGINS) --platform=linux/amd64 -t $(IMG_DOCKER_DEV) .
 
 docker:
 	@echo "🐋  Building production Docker image…"
@@ -259,9 +248,9 @@ docker-run:
 		--env-file=.env \
 		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl --fail http://localhost:4141/health || exit 1" \
-		--health-interval=1m --health-retries=3 \
-		--health-start-period=30s --health-timeout=10s \
+		--health-cmd="/app/healthcheck.sh" \
+		--health-interval=30s --health-retries=3 \
+		--health-start-period=10s --health-timeout=10s \
 		-d $(IMG_DOCKER_PROD)
 	@sleep 2 && docker logs $(PROJECT_NAME) | tail -n +1
 
@@ -278,9 +267,9 @@ docker-run-ssl: certs
 		-v $(PWD)/certs:/app/certs:ro \
 		-p 4141:4141 \
 		--restart=always --memory=$(CONTAINER_MEMORY) --cpus=$(CONTAINER_CPUS) \
-		--health-cmd="curl -k --fail https://localhost:4141/health || exit 1" \
-		--health-interval=1m --health-retries=3 \
-		--health-start-period=30s --health-timeout=10s \
+		--health-cmd="/app/healthcheck.sh" \
+		--health-interval=30s --health-retries=3 \
+		--health-start-period=10s --health-timeout=10s \
 		-d $(IMG_DOCKER_PROD)
 	@sleep 2 && docker logs $(PROJECT_NAME) | tail -n +1
 
@@ -456,6 +445,7 @@ ibmcloud-deploy:
 		echo "🔁 Updating existing app…"; \
 		ibmcloud ce application update --name $(IBMCLOUD_CODE_ENGINE_APP) \
 			--image private.$(IBMCLOUD_IMAGE_NAME) \
+			--min-scale 1 \
 			--cpu $(IBMCLOUD_CPU) --memory $(IBMCLOUD_MEMORY) \
 			--env-from-secret $(IBMCLOUD_ENV_SECRET) \
 			--env-from-configmap $(IBMCLOUD_ENV_CONFIGMAP) \
@@ -464,6 +454,7 @@ ibmcloud-deploy:
 		echo "🆕 Creating new app…"; \
 		ibmcloud ce application create --name $(IBMCLOUD_CODE_ENGINE_APP) \
 			--image private.$(IBMCLOUD_IMAGE_NAME) \
+			--min-scale 1 \
 			--cpu $(IBMCLOUD_CPU) --memory $(IBMCLOUD_MEMORY) \
 			--env-from-secret $(IBMCLOUD_ENV_SECRET) \
 			--env-from-configmap $(IBMCLOUD_ENV_CONFIGMAP) \
