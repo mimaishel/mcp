@@ -6,7 +6,7 @@
 	"--mcp-transport",
 	"stdio",
 	"--mcp-tools",
-	"resource_groups,catalog_da,account_list,billing_account-usage,billing_resource-instances-usage,account_audit-logs,catalog_service-marketplace,catalog_locations"
+	"resource_groups,target,catalog_da,project,schematics"
       ]
     }
   }

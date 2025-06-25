@@ -6,7 +6,7 @@
 	"--mcp-transport",
 	"stdio",
 	"--mcp-tools",
-	"resource_groups,target,billing_account-usage,billing_resource-instances-usage"
+	"assist,resource_groups,target,billing_account-usage,billing_resource-instances-usage"
       ]
     }
   }

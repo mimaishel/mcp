@@ -4,7 +4,7 @@ This project provides a Model Context Protocol (MCP) server for tools for workin
 
 ## Configurations
 
-The following example MCP configurations can be found in the `configs` folder for common use cases:
+The following example MCP configurations can be found in the `configs` folder to help get started with code engine use cases:
 
 - [mcp.code_engine_apps.json](configs/mcp.code_engine_apps.json) - Tools commonly used when working with Code Engine Applications
 - [mcp.code_engine_functions.json](configs/mcp.code_engine_functions.json) - Tools commonly used when working with Code Engine Functions
@@ -18,6 +18,37 @@ Each of these configurations also includes the following essential tools:
 - `resource-groups` - Getting lists of the available resource groups
 - `catalog_locations` - Getting available regions
 - `target` - Change the account, resource group, region or cloud API endpoint being used as the current working context for tools.
+
+## Prompts
+
+The MCP Prompt feature is not currently implemented in the IBM Cloud MCP Servers, however, here are some prompts that you can 
+use to get started using the tools:
+
+### Common
+
+- 🗣️ Assist me with `IBM_CLOUD_TOPIC`
+- 🗣️ What resource groups are in my account?
+- 🗣️ Target the `RESOURCE_GROUP_NAME` resource group
+- 🗣️ List all code engine projects
+- 🗣️ Select the `CODE_ENGINE_PROJECT_NAME` project to work with
+
+> NOTE: The above commands are from the [core](../core/README.md) set of tools and included in the code engine configuration examples above.  There are many other core commands for working with access, accounts, users, services, resource searching, etc. that can be used simply by adding the tool names to the config.
+
+### Apps
+
+- 🗣️ Show the apps in this project in table format
+- 🗣️ What url can I test `APP_NAME` on?
+- 🗣️ Which apps are having problems?
+- 🗣️ What's wrong with `APP_NAME`?
+- 🗣️ I have a containerized application in this github repo: `GITHUB_REPO`. Help me build and deploy it on code engine.
+
+### Functions
+
+- 🗣️ Show the functions in table format
+- 🗣️ What url can I test `FUNCTION_NAME` on?
+- 🗣️ What's wrong with `FUNCTION_NAME`?
+- 🗣️ What does an example Python function look like for Code Engine?
+- 🗣️ I have a python function in this github repo: `GITHUB_REPO`. Help me build and deploy it on code engine.
 
 ## Prerequisites
 
