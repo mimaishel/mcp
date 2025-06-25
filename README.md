@@ -10,41 +10,73 @@ MCP features are provided as **EXPERIMENTAL** features at this time.
 There are two runtime scenarios supported:
 
 1. **Local install** - Configure any MCP Host Application (Claude, VSCode, Cursor, Cline, mcp-cli, etc.) to use IBM Cloud CLI as an MCP server.  This scenario involves installing the IBM Cloud CLI locally and then updating the host application's JSON MCP configuration settings to use the IBM Cloud CLI in MCP mode, using the stdio mcp transport.
-2. **Containers** - Use the Containers provided in the `/src` dir to build fit-for-purpose containerized versions of the IBM Cloud MCP Server which can be deployed on any container runtime (podman, docker, IBM Cloud Code Engine, Redhat OpenShift, Kubernetes, etc.) to run as an MCP Remote server (HTTP transport).  This scenario involves building the container file, providinging environment variables to configure the appropriate tools to be exposed via MCP, and securely configuring the credentials to be used for the container. 
+2. **Containerized MCP Servers** - Use the Containers provided in the `/src` dir to build fit-for-purpose containerized versions of the IBM Cloud MCP Server which can be deployed on any container runtime (podman, docker, IBM Cloud Code Engine, Redhat OpenShift, Kubernetes, etc.) to run as an MCP Remote server (HTTP transport).  This scenario involves building the container file, providinging environment variables to configure the appropriate tools to be exposed via MCP, and securely configuring the credentials to be used for the container. 
 
-## Pre-built Binaries
+## 💻 Local Install
 
-IBM Cloud CLI Binaries enabled with MCP features are for different operating systems are available from [Artifactory](https://na.artifactory.swg-devops.com/artifactory/bluemix-cli-builds-generic-local/ibmcloud-cli/dev/lastgoodbuild/):
+### Don't have IBM Cloud CLI? --> Install it!
 
-- **Mac**: [x86\_64](https://na.artifactory.swg-devops.com/artifactory/bluemix-cli-builds-generic-local/ibmcloud-cli/dev/lastgoodbuild/ibmcloud-darwin-amd64) | [ARM64](https://na.artifactory.swg-devops.com/artifactory/bluemix-cli-builds-generic-local/ibmcloud-cli/dev/lastgoodbuild/ibmcloud-darwin-arm64)
-- **Linux**: [x86\_64](https://na.artifactory.swg-devops.com/artifactory/bluemix-cli-builds-generic-local/ibmcloud-cli/dev/lastgoodbuild/ibmcloud-linux-amd64) | [ARM64](https://na.artifactory.swg-devops.com/artifactory/bluemix-cli-builds-generic-local/ibmcloud-cli/dev/lastgoodbuild/ibmcloud-linux-arm64)
-- **Windows**: [x86\_64](https://na.artifactory.swg-devops.com/artifactory/bluemix-cli-builds-generic-local/ibmcloud-cli/dev/lastgoodbuild/ibmcloud-windows-amd64.exe)
+Simply [install the IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli)--that's all you need!
 
-> These binaries are not installers—run them directly from their folders.
+### Already have IBM Cloud CLI? --> Check to see if you have MCP features
 
-## Containerized MCP Servers
+If you already have the IBM Cloud CLI installed, check to see if MCP features are available:
 
-Scripts to build containers are located in the `/src` folder. 
+```sh
+ibmcloud --help
+```
+
+If you already have MCP features, you will see the following section near the bottom of the output:
+
+```text
+MCP OPTIONS:
+  --mcp-transport      [EXPERIMENTAL] Specify the transport to start the MCP server. Valid options are `stdio` or a valid `HTTP SSE URL`.
+  --mcp-tools          [EXPERIMENTAL] Specifies an optional comma-delimited list of commands to expose as MCP tools.
+  --mcp-allow-write    [EXPERIMENTAL] Allows write operations for tasks such as creating a resource.
+```
+
+If you don't have MCP features, update with:
+
+```sh
+ibmcloud update
+ibmcloud --help
+```
+
+Verify that the `MCP OPTIONS` are available and proceed with configuring your host application to use the IBM Cloud MCP Server (proceed to the `Usage` section below).
+
+## 📦 Containerized IBMCloud MCP Servers
+
+Containerfiles and Makefiles for building IBM Cloud MCP Server containers are located in directories under the `/src` folder.
+
+>You can also use the IBM Cloud MCP Server Containerized installation instead of the Local Install steps in the previous section if you have `podman`, `docker` or similar container runtime installed locally.
+
 Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](src/core/README.md)
 
-## Usage
+## 🤏🏻 Usage (Local Installs)
 
 1. Obtain an IBM Cloud **API key** with minimal permissions for testing.
+
 > This should preferably be a **service id** api-key rather than user api-key, to restrict access privileges to only areas of IBM Cloud that you will be testing with the MCP server. For the name of the service id, you can use the name of a fictional platform engineering agent like, “<your_initials>-network-engineer” or “<your_initials>-account-manager”.  Then create an access group that assigns your new service id with the restricted access permissions that you want to allow the simulated agent to use.  
 
-2. Log in:
+2. Find the path to your IBM Cloud CLI binary:
+
+```bash
+where ibmcloud
+```
+
+3. Log in:
 
 ```bash
 ibmcloud login --apikey <your-api-key>
 ```
 
-3. Set up a host app like [mcp-cli](https://github.com/IBM/mcp-cli) and configure `server_config.json` to point to your built CLI and allowed tools:
+4. Set up a host app like [mcp-cli](https://github.com/IBM/mcp-cli) and configure the MCP json for the host app to point to the IBM Cloud CLI binary and allowed tools:
 
 ```json
 {
   "mcpServers": {
     "ibmcloud": {
-      "command": "/path/to/ibmcloud",
+      "command": "/path/to/ibmcloud",  
       "args": [
         "--mcp-transport", "stdio",
         "--mcp-tools", "resource_groups,target,COMMANDS_THAT_LIST_AND_VIEW_RESOURCES"
@@ -54,7 +86,7 @@ ibmcloud login --apikey <your-api-key>
 }
 ```
 
-## Safe mode -- Secure by default
+## 🛡️ Safe mode -- Secure by default
 
 The default configuration of IBM Cloud MCP Server will run in **Safe Mode** which will not allow tools which make changes to IBM Cloud resources to be invoked via MCP.  To override this default behavior, use the `--mcp-allow-write` argument in the mcp configuration, eg.:
 
@@ -78,11 +110,11 @@ The default configuration of IBM Cloud MCP Server will run in **Safe Mode** whic
 The repository is organized as follows:
 
 ```text
-docs/                   # Website placeholder
+docs/                   # Website documentation
 src/                    # IBM Cloud MCP Server containers
   core/                 # MCP Server for IBM Cloud core tools
-  ce/                   # MCP Server configuration for IBM Cloud Code Engine tools
-  catalog-mgmt/         # MCP Server configuration for IBM Cloud Catalog Management (private catalog) tools
+  code-engine/                   # MCP Server configuration for IBM Cloud Code Engine tools
+  OTHER_SERVICES/        # MCP Server container configurations for other IBM Cloud services
 ```
 
 - **docs/** is reserved for future website templates.
@@ -107,13 +139,13 @@ MCP Server container configurations are provided for each each major IBM Cloud s
 5. Restart `mcp-cli`.  Type `/tools`. The IBM Cloud tools you configured should be listed.
 6. Type a prompt, eg. "List resource groups" or "Target the xxx resource group".  If you have enabled `--mcp-allow-write` mode, you can try "Create a resource group named 'mcp-test'".
 
-## LLM Requirements & Limitations
+## 🧠 LLM Requirements & Limitations
 
 - Only LLMs that support **tool calling** work with MCP.
 - LLM context window sizes vary and can affect results, including the ability to use multiple tools within a conversation.
 - Limit tools exposed to 20–30 per session. MCP injects tool metadata into LLM context.
 
-## MCP Host Applications
+## 🖥️ MCP Host Applications
 
 The IBM Cloud MCP features have been used successfully with the following MCP-compliant apps. However, any MCP-compliant host application should work, but YMMV:
 
@@ -144,24 +176,6 @@ There are common security vulnerabilities which also apply when using MCP that y
 
 - **Monitor all data flows** for potential data leaks. Tools like Jaeger, OpenTelemetry and security monitors configured on your agent runtimes can be used to help detect threats. 
 
-## Example Configurations
+## 🗣️ Feedback
 
-### Account & Usage
-
-> Requires `--mcp-allow-write`
-
-```json
-"--mcp-tools": "resource_groups,account_user,account_list,billing_account-usage,billing_resource-instances-usage,account_audit-logs,catalog_service-marketplace,catalog_locations"
-```
-
-### Resources Management
-
-> Requires `--mcp-allow-write`
-
-```json
-"--mcp-tools": "resource_groups,catalog_list,resource_search,resource_reclamations,resource_reclamation-show,resource_service-instances,resource_service-instance-create,resource_tag-attach,resource_tag-create,resource_tagdelete,resource_tags,resource_subscriptions,resource_subscription,resource_service_instance"
-```
-
-### Access groups
-
-TBD
+We would love you hear your feedback on these new features through [Issues in this repo](https://github.com/IBM-Cloud/ibmcloud-mcp-server/issues).

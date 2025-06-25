@@ -2,7 +2,7 @@
 
 This project provides a Model Context Protocol (MCP) server for IBM Cloud core tools.
 
-## Configurations
+## ⚙️ Configurations
 
 The following example MCP configurations can be found in the `configs` folder to help get started with code engine use cases:
 
@@ -20,7 +20,7 @@ The following example MCP configurations can be found in the `configs` folder to
 - [mcp.iam-trusted-profile.json](configs/mcp.iam-trusted-profile.json) - Tools for working with Identity & Access Management (IAM) Trusted Profiles.
 - [mcp.resource-manager.json](configs/mcp.resource-manager.json) - Tools for with resources and resource groups, including creating service instances, account-wide resource searching, and resource quotas.
 
-## Prompts
+## 🗣️ Prompts
 
 The MCP Prompt feature is not currently implemented in the IBM Cloud MCP Servers, however, here are some prompts that you can
 use to get started using the core tools:
@@ -34,7 +34,7 @@ use to get started using the core tools:
 - 🗣️ Create a new resource group named `RESOURCE_GROUP_NAME`
 - 🗣️ Delete the resource group named `RESOURCE_GROUP_NAME`
 
-### Cloud Automation
+### 🤖 Cloud Automation
 
 - 🗣️ What projects are in this account?
 - 🗣️ Create a new project, "`PROJECT_NAME`".
@@ -47,7 +47,7 @@ use to get started using the core tools:
 
 - 🚧 TBD - WORK IN PROGRESS 🚧 
 
-## Prerequisites
+## 🧾 Prerequisites
 
 To build, run, and deploy this project, you will need the following installed:
 
@@ -59,7 +59,7 @@ To build, run, and deploy this project, you will need the following installed:
 - [`trivy`](https://trivy.dev/v0.60/getting-started/installation/) (for scanning container images for vulnerabilities)
 - IBM Cloud CLI with `container-registry` and `code-engine` plugins
 
-## Building the Container Image
+## 🗜️ Building the Container Image
 
 The project uses a `Containerfile` to define the container image. You can build the image using either Podman or Docker via the Makefile targets.
 
@@ -118,7 +118,7 @@ An optional paramater of `IBMCLOUD_PLUGINS=one,two,three` can be added to the fo
 }
 ```
 
-## Running the Container Locally
+## 🏃🏽‍♀️ Running the Container Locally
 
 You can run the built container image locally using the `make` targets for Podman or Docker.
 
@@ -148,7 +148,7 @@ Ensure you have a `.env` file in the project root. Copy `.env.example` to `.env`
     make docker-run-ssl
     ```
 
-## Stopping the Container
+## ✋🏼 Stopping the Container
 
 Stop and remove the running container instance:
 
@@ -164,7 +164,7 @@ Stop and remove the running container instance:
     make docker-stop
     ```
 
-## Testing the Container
+## 🧪 Testing the Container
 
 Use `curl` to quickly test the running container endpoint:
 
@@ -180,7 +180,7 @@ Use `curl` to quickly test the running container endpoint:
     make docker-test
     ```
 
-## Security Scanning
+## 👮🏼 Security Scanning
 
 The Makefile includes targets for scanning your `Containerfile` and built images for vulnerabilities and best practices.
 
@@ -204,7 +204,7 @@ The Makefile includes targets for scanning your `Containerfile` and built images
     make hadolint
     ```
 
-## Deployment to IBM Cloud Code Engine
+## ☁️ Deployment to IBM Cloud Code Engine
 
 This project includes Makefile targets to help you deploy the container image to IBM Cloud Code Engine.
 
@@ -273,7 +273,7 @@ This project includes Makefile targets to help you deploy the container image to
     make ibmcloud-ce-rm
     ```
 
-## Getting Help
+## 🙋🏿‍♀️ Getting Help
 
 Run the default `make` target or `make help` to see a list of all available commands and their descriptions:
 
