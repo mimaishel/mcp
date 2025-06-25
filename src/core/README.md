@@ -71,22 +71,10 @@ An optional paramater of `IBMCLOUD_PLUGINS=one,two,three` can be added to the fo
     make podman
     ```
 
-* **Using Podman (Development image):**
-
-    ```bash
-    make podman-dev
-    ```
-
 * **Using Docker (Production image):**
 
     ```bash
     make docker
-    ```
-
-* **Using Docker (Development image):**
-
-    ```bash
-    make docker-dev
     ```
 
 ## Running the Container with an MCP Client
@@ -98,9 +86,6 @@ An optional paramater of `IBMCLOUD_PLUGINS=one,two,three` can be added to the fo
             "command": "/opt/podman/bin/podman",
             "args": [
                 "run",
-                "--platform=linux/arm64",
-                "-p",
-                "4444:4444",
                 "-i",
                 "--rm",
                 "-e",
