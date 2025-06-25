@@ -11,4 +11,7 @@ case "$IBMCLOUD_MCP_TRANSPORT" in
         ;;
 esac
 
-/app/ibmcloud --mcp-transport $transport_mode --mcp-tools $IBMCLOUD_MCP_TOOLS
+args="--mcp-transport $transport_mode"
+[ -n "$IBMCLOUD_MCP_TOOLS" ] && args+=" --mcp-tools $IBMCLOUD_MCP_TOOLS"
+
+/app/ibmcloud $args
