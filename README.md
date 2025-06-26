@@ -113,8 +113,8 @@ The repository is organized as follows:
 docs/                   # Website documentation
 src/                    # IBM Cloud MCP Server containers
   core/                 # MCP Server for IBM Cloud core tools
-  code-engine/                   # MCP Server configuration for IBM Cloud Code Engine tools
-  OTHER_SERVICES/        # MCP Server container configurations for other IBM Cloud services
+  serverless/           # MCP Server container configurations for Serverless computing on IBM Cloud
+  OTHER_SERVICES/       # MCP Server container configurations for other IBM Cloud services
 ```
 
 - **docs/** is reserved for future website templates.
