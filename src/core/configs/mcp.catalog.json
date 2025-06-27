@@ -6,7 +6,7 @@
 	"--mcp-transport",
 	"stdio",
 	"--mcp-tools",
-	"assist,catalog_service-marketplace,catalog_locations,resource_service-instance,catalog_service-marketplace"
+	"catalog"
       ]
     }
   }
