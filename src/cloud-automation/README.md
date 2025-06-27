@@ -45,8 +45,6 @@ use to get started using the tools:
 - 🗣️ Assist me with `IBM_CLOUD_TOPIC`
 - 🗣️ What resource groups are in my account?
 - 🗣️ Target the `RESOURCE_GROUP_NAME` resource group
-- 🗣️ List all code engine projects
-- 🗣️ Select the `CODE_ENGINE_PROJECT_NAME` project to work with
 
 > NOTE: The above common commands are from the [core](../core/README.md) set of tools and included in the iac configuration examples above.  There are many other core commands for working with access, accounts, users, services, resource searching, etc. that can be used simply by adding the tool names to the config.
 

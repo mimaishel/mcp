@@ -1,0 +1,1 @@
+{% include "../../../src/cloud-automation/README.md" %}

@@ -20,7 +20,7 @@ nav:
     - Serverless MCP Server: servers/serverless.md
     - VPC MCP Server: servers/vpc.md
     - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
-    
+    - Cloud Automation MCP Server: servers/cloud-automation.md
 # Copyright
 copyright: Copyright (c) 2025 IBM Corporation. 
 
