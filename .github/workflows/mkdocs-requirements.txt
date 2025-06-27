@@ -1,3 +1,3 @@
 mkdocs==1.6.1 --hash=sha256:db91759624d1647f3f34aa0c3f327dd2601beae39a366d6e064c03468d35c20e
 mkdocs-material==9.6.14 --hash=sha256:3b9cee6d3688551bf7a8e8f41afda97a3c39a12f0325436d76c86706114b721b
-mkdocs-include-markdown-plugin==7.1.6
+mkdocs-include-markdown-plugin==7.1.6 --hash=sha256:7975a593514887c18ecb68e11e35c074c5499cfa3e51b18cd16323862e1f7345
