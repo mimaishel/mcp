@@ -21,5 +21,5 @@ help:
 .PHONY: docs
 docs:
 	@echo "📚  Build local website and serve on localhost…"
-	pip install -r .github/workflows/mkdocs-requirements.txt
-	mkdocs serve -f docs/mkdocs.yml
+	pip install -r ../.github/workflows/mkdocs-requirements.txt
+	mkdocs serve -f ./mkdocs.yml

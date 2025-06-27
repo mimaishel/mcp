@@ -4,4 +4,4 @@
 # gitignore
 **/.env
 **/.env.ce
-**/.vscode
+docs/.cache

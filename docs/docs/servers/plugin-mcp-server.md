@@ -1,1 +1,1 @@
-{% include "../../../src/plugin-mcp-server/README.md" %}
+{% include "../../../src/serverless/README.md" %}
