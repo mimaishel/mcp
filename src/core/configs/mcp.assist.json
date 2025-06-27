@@ -4,10 +4,10 @@
       "command": "/Users/chrism1/Code/cli/bluemix-cli/out/ibmcloud-darwin-arm64",
       "args": [
         "--mcp-allow-write",
-	"--mcp-transport",
-	"stdio",
-	"--mcp-tools",
-	"assist"
+        "--mcp-transport",
+        "stdio",
+        "--mcp-tools",
+        "assist"
       ]
     }
   }
