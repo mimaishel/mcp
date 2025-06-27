@@ -6,9 +6,9 @@ This project provides a Model Context Protocol (MCP) server with tools for serve
 
 The following example MCP configurations can be found in the `configs` folder to help get started with code engine use cases:
 
-- [mcp.code_engine_apps.json](configs/mcp.code_engine_apps.json) - Tools commonly used when working with Code Engine Applications
-- [mcp.code_engine_functions.json](configs/mcp.code_engine_functions.json) - Tools commonly used when working with Code Engine Functions
-- [mcp.code_engine_jobs.json](configs/mcp.code_engine_jobs.json) - Tools commonly used when working with Code Engine Jobs
+- [mcp.code_engine_apps.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/serverless/configs/mcp.code_engine_apps.json) - Tools commonly used when working with Code Engine Applications
+- [mcp.code_engine_functions.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/serverless/configs/mcp.code_engine_functions.json) - Tools commonly used when working with Code Engine Functions
+- [mcp.code_engine_jobs.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/serverless/configs/mcp.code_engine_jobs.json) - Tools commonly used when working with Code Engine Jobs
 
 Each of these configurations also includes the following essential tools:
 
@@ -32,7 +32,7 @@ use to get started using the tools:
 - 🗣️ List all code engine projects
 - 🗣️ Select the `CODE_ENGINE_PROJECT_NAME` project to work with
 
-> NOTE: The above commands are from the [core](../core/README.md) set of tools and included in the code engine configuration examples above.  There are many other core commands for working with access, accounts, users, services, resource searching, etc. that can be used simply by adding the tool names to the config.
+> NOTE: The above commands are from the [core](core-mcp-server.md) set of tools and included in the code engine configuration examples above.  There are many other core commands for working with access, accounts, users, services, resource searching, etc. that can be used simply by adding the tool names to the config.
 
 ### 📦 Apps
 

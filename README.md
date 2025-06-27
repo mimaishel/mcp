@@ -50,7 +50,7 @@ Containerfiles and Makefiles for building IBM Cloud MCP Server containers are lo
 
 >You can also use the IBM Cloud MCP Server Containerized installation instead of the Local Install steps in the previous section if you have `podman`, `docker` or similar container runtime installed locally.
 
-Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](src/core/README.md)
+Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](servers/core-mcp-server.md)
 
 ## 🤏🏻 Usage (Local Installs)
 
