@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ibmcloud": {
+      "command": "/Users/chrism1/Code/cli/bluemix-cli/out/ibmcloud-darwin-arm64",
+      "args": [
+	"--mcp-transport",
+	"stdio",
+	"--mcp-tools",
+	"resource_groups,target,ks_init,ks_locations,ks_messages,ks_quota_ls,ks_storage_volumes,ks_storage_volume_get,ks_security_groups,ks_versions,ks_vpcs,ks_clusters,ks_cluster_get,ks_cluster_services,ks_zone_ls,ks_flavor_ls,ks_flavor_get,ks_vpc_ls,ks_cluster_create_vpc-gen2,ks_subnets,ks_workers,ks_workers_get,ks_worker-pool_ls,ks_worker-pool_get,ks_worker_replace,ks_worker_reboot"
+      ]
+    }
+  }
+}
