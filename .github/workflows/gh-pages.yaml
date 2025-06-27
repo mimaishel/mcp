@@ -30,4 +30,4 @@ jobs:
             mkdocs-material-
       - run: |
           pip install --requirement .github/workflows/mkdocs-requirements.txt
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs gh-deploy --force --config-file docs/mkdocs.yml
