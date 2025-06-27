@@ -13,7 +13,6 @@ The following example MCP configurations can be found in the `configs` folder to
 - [mcp.billing.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.billing.json) - Tools for querying billing and usage information for your accounts.
 - [mcp.config.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.config.json) - Tools for adjusting common configuration settings for IBM Cloud mcp tools, such as display formats.
 - [mcp.dev.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.dev.json) - Tools for working with toolchains and pipelines (tekton).
-- [mcp.iac.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iac.json) - Tools for working with Cloud Automation, including Projects, Deployable Architectures, Private Catalogs and Schematics (Terraform/Ansible service).
 - [mcp.iam-access.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iam-access.json) - Tools for working with Identity & Access Management (IAM) Users, Roles, Access groups and API Keys.
 - [mcp.iam-policy.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iam-policy.json) - Tools for working with Identity & Access Management (IAM) Policies.
 - [mcp.iam-service.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iam-service.json) - Tools for working with Identity & Access Management (IAM) Service Id's, Service groups and Service API Keys.
@@ -28,24 +27,50 @@ use to get started using the core tools:
 ### Common
 
 - 🗣️ Assist me with `IBM_CLOUD_TOPIC`
+- 🗣️ What are the different parts of a CRN?
+- 🗣️ Target the `RESOURCE_GROUP_NAME` resource group
+
+### Resource Management
 
 - 🗣️ What resource groups are in my account?
-- 🗣️ Target the `RESOURCE_GROUP_NAME` resource group
 - 🗣️ Create a new resource group named `RESOURCE_GROUP_NAME`
 - 🗣️ Delete the resource group named `RESOURCE_GROUP_NAME`
+- 🗣️ Search for resources using the Lucene query, `QUERY` to filter the search results.
+- 🗣️ What is the RESOURCE ID id for `CRN`?
+- 🗣️ What is the service type and resource type for `CRN`?
+- 🗣️ List all service instances
+- 🗣️ Create a tag, `TAG`
+- 🗣️ Add the tag, `TAG` to the resource `CRN`
+- 🗣️ Delete the tag, `TAG`
+- 🗣️ Show me all resources with the tag, `TAG`
 
-### 🤖 Cloud Automation
+### Catalog
 
-- 🗣️ What projects are in this account?
-- 🗣️ Create a new project, "`PROJECT_NAME`".
-- 🗣️ List the environments in project, "`PROJECT_NAME`".
-- 🗣️ Create new "dev", "test" and "prod" environments in `PROJECT_NAME`.
-- 🗣️ List the configurations in project, "`PROJECT_NAME`".
-- 🗣️ List all the deployable architectures in all catalogs
-- 🗣️ Show me detailed deployment information for the XYZ deployable architectures in the Community Registry catalog
-- 🗣️ Select the `CODE_ENGINE_PROJECT_NAME` project to work with
+- 🗣️ Show all services in the catalog having to do with `TOPIC`
 
-- 🚧 TBD - WORK IN PROGRESS 🚧 
+### Identity & Access Managment
+
+- 🗣️ List the access groups in this account.
+- 🗣️ Add `EMAIL` to `ACCESS_GROUP_NAME`
+- 🗣️ Remove `EMAIL` from the `ACCESS_GROUP_NAME` access group
+- 🗣️ Create a new api-key for accessing my services.
+- 🗣️ Create a service id group, `name` that will be used for `purpose - Eg. Service Id's that represent Agents`.
+- 🗣️ Create a service id for`SERVICE_ID` as part of the service id group `SERVICE_ID_GROUP_NAME`
+- 🗣️ Create a new access group for `Reader|Writer|Manager|Viewer...` access to `SERVICE1,SERVICE2...`. Assign the `SERVICE_ID_NAME|SERVICE_ID_GROUP_NAME` to the access group.
+- 🗣️ Assign `email1,email2,...` to access group `ACCESS_GROUP_NAME`
+- 🗣️ Delete the service id,`SERVICE_ID`
+- 🗣️ Delete the access group, `ACCESS_GROUP` name
+
+### Accounts
+
+- 🗣️ Invite `EMAIL` to this account
+- 🗣️ Disable the user `EMAIL` in this account
+- 🗣️ List the users in this account
+- 🗣️ What other accounts do I have access to?
+
+### Billing & Usage
+🗣️ Show me a usage summary for the last month.
+🗣️ Show me resource usage costs for the last week.
 
 ## 🧾 Prerequisites
 

@@ -5,9 +5,8 @@
       "args": [
         "--mcp-transport",
         "stdio",
-        "--mcp-allow-write",
         "--mcp-tools",
-        "resource_groups,target,assist,iam_access,iam_api-key,iam_role,iam_audit-logs,account_user,account_audit-logs"
+        "target,is_dynamic-route,is_endpoint,is_load-balancer"
       ]
     }
   }

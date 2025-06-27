@@ -7,7 +7,7 @@
         "stdio",
         "--mcp-allow-write",
         "--mcp-tools",
-        "resource_groups,target,assist,iam_access,iam_api-key,iam_role,iam_audit-logs,account_user,account_audit-logs"
+        "assist,resource_groups,resource_search,resource_service-instance,event-notifications"
       ]
     }
   }

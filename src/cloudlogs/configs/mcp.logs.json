@@ -3,8 +3,10 @@
     "ibmcloud": {
       "command": "ibmcloud",
       "args": [
-        "--mcp-transport",
-        "stdio"
+	"--mcp-transport",
+	"stdio",
+	"--mcp-tools",
+	"target,resource_groups,cloud-logs"
       ]
     }
   }

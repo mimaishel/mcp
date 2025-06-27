@@ -16,11 +16,13 @@ nav:
   - Welcome:
     - index.md
   - Servers:
-    - Core MCP Server: servers/core-mcp-server.md
-    - Plugin MCP Server: servers/plugin-mcp-server.md
-
+    - Core MCP Server: servers/core.md
+    - Serverless MCP Server: servers/serverless.md
+    - VPC MCP Server: servers/vpc.md
+    - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
+    
 # Copyright
-copyright: Copyright placeholder # TODO: Update to correct copyright.
+copyright: Copyright (c) 2025 IBM Corporation. 
 
 # Theme settings
 # theme:

@@ -5,9 +5,8 @@
       "args": [
         "--mcp-transport",
         "stdio",
-        "--mcp-allow-write",
         "--mcp-tools",
-        "resource_groups,target,assist,iam_access,iam_api-key,iam_role,iam_audit-logs,account_user,account_audit-logs"
+        "target,is_vpcs,is_instance,is_floating,is_image,is_catalog,is_key,is_virtual-network-interface,is_reservation"
       ]
     }
   }

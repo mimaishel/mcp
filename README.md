@@ -1,18 +1,19 @@
-# IBM Cloud MCP Server
+# IBM Cloud MCP Servers
 
-The IBM Cloud MCP Server provides an interface layer between AI assistants and IBM Cloud CLI tools. This README details how to install, build, configure, and run the MCP Server for development and testing.
+This project contains MCP Servers for IBM Cloud which provides an interface layer between AI assistants and IBM Cloud services. This README details how to install, build, configure, and run the MCP Server(s) for development and testing.
 
 ## Overview
 
-The MCP server implementation for IBM Cloud is built directly into the IBM Cloud CLI native binaries.
-MCP features are provided as **EXPERIMENTAL** features at this time.
+The core MCP server implementation for IBM Cloud is built directly into the IBM Cloud CLI native binaries.
+
+> All MCP features are provided as **EXPERIMENTAL** features at this time.
 
 There are two runtime scenarios supported:
 
-1. **Local install** - Configure any MCP Host Application (Claude, VSCode, Cursor, Cline, mcp-cli, etc.) to use IBM Cloud CLI as an MCP server.  This scenario involves installing the IBM Cloud CLI locally and then updating the host application's JSON MCP configuration settings to use the IBM Cloud CLI in MCP mode, using the stdio mcp transport.
+1. **Local install - Core MCP Server** - Configure any MCP Host Application (Claude, VSCode, Cursor, Cline, mcp-cli, etc.) to use IBM Cloud CLI as an MCP server.  This scenario involves installing the IBM Cloud CLI locally and then updating the host application's JSON MCP configuration settings to use the IBM Cloud CLI in MCP mode, using the stdio mcp transport.
 2. **Containerized MCP Servers** - Use the Containers provided in the `/src` dir to build fit-for-purpose containerized versions of the IBM Cloud MCP Server which can be deployed on any container runtime (podman, docker, IBM Cloud Code Engine, Redhat OpenShift, Kubernetes, etc.) to run as an MCP Remote server (HTTP transport).  This scenario involves building the container file, providinging environment variables to configure the appropriate tools to be exposed via MCP, and securely configuring the credentials to be used for the container. 
 
-## 💻 Local Install
+## 💻 Local Install - Core MCP Server and Plugin Modules
 
 ### Don't have IBM Cloud CLI? --> Install it!
 
@@ -50,7 +51,7 @@ Containerfiles and Makefiles for building IBM Cloud MCP Server containers are lo
 
 >You can also use the IBM Cloud MCP Server Containerized installation instead of the Local Install steps in the previous section if you have `podman`, `docker` or similar container runtime installed locally.
 
-Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](servers/core-mcp-server.md)
+Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](servers/core.md)
 
 ## 🤏🏻 Usage (Local Installs)
 
@@ -113,8 +114,8 @@ The repository is organized as follows:
 docs/                   # Website documentation
 src/                    # IBM Cloud MCP Server containers
   core/                 # MCP Server for IBM Cloud core tools
-  serverless/           # MCP Server container configurations for Serverless computing on IBM Cloud
-  OTHER_SERVICES/       # MCP Server container configurations for other IBM Cloud services
+  serverless/           # MCP Server container configurations for Serverless computing on IBM Cloud using Code Engine
+  _MODULES_/            # MCP Server container configurations for other IBM Cloud services
 ```
 
 - **docs/** is reserved for future website templates.
