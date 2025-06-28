@@ -9,7 +9,7 @@ site_author: "Maxim Shelepov"
 
 # Repository Information
 repo_name: "ibm/mcp-servers" # TODO: Update to correct repo name.
-repo_url: "https://github.com/ibm/mcp-servers" # TODO: Update to correct repo url.
+repo_url: "https://github.com/IBM-Cloud/ibmcloud-mcp-server"
 
 # Main Site Navigation.
 nav:
@@ -21,9 +21,17 @@ nav:
     - VPC MCP Server: servers/vpc.md
     - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
     - Cloud Automation MCP Server: servers/cloud-automation.md
-# Copyright
-copyright: Copyright (c) 2025 IBM Corporation. 
 
+# Copyright
+copyright: Copyright (c) 2025 IBM Corporation.
+
+# Draft Pages.
+# Notes:
+# - To exclude from nav, comment out the page above in the "nav:" section.
+# draft_docs: |
+#   servers/core.md
+
+### ------- FOR REFERENCE ------- ###
 # Theme settings
 # theme:
 #   language: en
