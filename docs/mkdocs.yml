@@ -8,7 +8,7 @@ site_description: "IBM MCP Servers Documentation"
 site_author: "Maxim Shelepov"
 
 # Repository Information
-repo_name: "ibm/mcp-servers" # TODO: Update to correct repo name.
+repo_name: "IBM-Cloud/ibmcloud-mcp-server"
 repo_url: "https://github.com/IBM-Cloud/ibmcloud-mcp-server"
 
 # Main Site Navigation.

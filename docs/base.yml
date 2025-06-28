@@ -91,7 +91,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/IBM/mcp-servers # TODO: Updated to correct github link.
+      link: https://github.com/IBM-Cloud/ibmcloud-mcp-server
 
 # External/Internal plugins.
 plugins:
