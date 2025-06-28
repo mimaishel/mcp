@@ -98,6 +98,18 @@ plugins:
   - include-markdown
   - search
   - privacy
+  - mermaid2
+
+# Markdown arguments and extensions.
+markdown_extensions:
+  # recommended config with materials theme
+  # https://mkdocs-mermaid2.readthedocs.io/en/latest/
+  - pymdownx.superfences:
+      # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
 
 # Configure the Markdown extensions for magic links
 # markdown_extensions:
