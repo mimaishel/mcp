@@ -1,0 +1,44 @@
+<!-- Elements added to "home.html" will only be displayed on the home page -->
+
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+
+<div>
+  <link rel="stylesheet" href="./styles/home.css">
+
+  <div class="vid-container">
+    <div class="text-section-container">
+      <div class="text-content-container">
+        <h1>Enhance your LLM 🧠 with Tools 🛠️ from IBM Cloud ☁️</h1>
+        <!-- <p>With the help of the MCP protocol, a standardized protocol for LLM and external server communication, connect your client LLMs with the tools and capabilities you need.</p> -->
+      </div>
+      <div class="text-content-container">
+        <p>With the help of the MCP protocol, a standardized protocol for LLM to external server communication, connect your client LLMs with the tools and capabilities you need provided by IBM cloud.</p>
+      </div>
+    </div>
+    <!-- <div style="padding: 0 5rem;">
+      <div style="background-color: rgb(38, 38, 35); padding: 0.1rem; border-radius: 0.5rem;">
+        <img src="./assets/pic.png" style="width: 100%; height: 100%;" />
+      </div>
+    </div> -->
+    <video autoplay muted loop id="myVideo" style="width: 100%; height: 100%;">
+      <source src="./assets/vid.mov">
+    </video>
+    <!-- <iframe
+      style="width: 100%; height: 100%;"
+      src="https://www.youtube.com/embed/rHqk0ZGb6qo?si=4Gr5_0wmi2Y048lY&amp;controls=0&amp;autoplay=1&amp;mute=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe> -->
+  </div>
+</div>
+
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}
+  {{ super() }}
+{% endblock %}

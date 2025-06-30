@@ -26,6 +26,11 @@ theme:
     - navigation.sections
     - navigation.instant
     - navigation.indexes
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
     # search.
     - search.highlight
     - search.share
@@ -75,8 +80,9 @@ theme:
         name: Switch to system preference
 
   font: false
+  # using the theme default docs favicon.
   # favicon: "favicon.ico"
-  logo: logo.png
+  logo: assets/logo.png
 
 # hide:
 #   - navigation         # Hide left navigation

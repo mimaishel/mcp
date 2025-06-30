@@ -3,7 +3,7 @@ INHERIT: ./base.yml
 
 # Project Information
 site_name: IBM MCP Servers
-site_url: "https://pages.github.com/ibm/mcp-servers/"
+site_url: "https://pages.github.com/IBM-Cloud/ibmcloud-mcp-servers/"
 site_description: "IBM MCP Servers Documentation"
 site_author: "Maxim Shelepov"
 
@@ -13,14 +13,15 @@ repo_url: "https://github.com/IBM-Cloud/ibmcloud-mcp-server"
 
 # Main Site Navigation.
 nav:
-  - Welcome:
-    - index.md
-  - Servers:
-    - Core MCP Server: servers/core.md
-    - Serverless MCP Server: servers/serverless.md
-    - VPC MCP Server: servers/vpc.md
-    - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
-    - Cloud Automation MCP Server: servers/cloud-automation.md
+  - Home: index.md
+  - Documentation:
+    - Overview: overview.md
+    - Servers:
+      - Core MCP Server: servers/core.md
+      - Serverless MCP Server: servers/serverless.md
+      - VPC MCP Server: servers/vpc.md
+      - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
+      - Cloud Automation MCP Server: servers/cloud-automation.md
 
 # Copyright
 copyright: Copyright (c) 2025 IBM Corporation.
