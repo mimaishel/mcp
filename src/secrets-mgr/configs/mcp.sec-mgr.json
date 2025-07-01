@@ -6,7 +6,7 @@
         "--mcp-transport",
         "stdio",
         "--mcp-tools",
-        "target,resource_groups,resource_search,resource_service-instance,secrets-manager"
+        "assist,target,resource_groups,resource_search,resource_service-instance,secrets-manager"
       ]
     }
   }
