@@ -28,9 +28,20 @@
   }
 
   .text-content-container p {
-    max-width: 50%;
+    max-width: 60%;
     color: inherit;
     text-align: center;
+    font-size: 0.7rem;
+  }
+
+  .image-container {
+    padding: 0 5rem;
+  }
+
+  .image-background {
+    background-color: rgb(33, 33, 29);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
   }
 
   /* .md-main, .md-main__inner {
