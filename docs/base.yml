@@ -26,6 +26,12 @@ theme:
     - navigation.sections
     - navigation.instant
     - navigation.indexes
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
     # search.
     - search.highlight
     - search.share
@@ -64,19 +70,20 @@ theme:
       primary: blue
       accent: blue
       toggle:
-        icon: material/toggle-switch
+        icon: material/lightbulb
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       accent: blue
       toggle:
-        icon: material/toggle-switch-off
+        icon: material/lightbulb-outline
         name: Switch to system preference
 
   font: false
+  # using the theme default docs favicon.
   # favicon: "favicon.ico"
-  logo: logo.png
+  logo: assets/logo.png
 
 # hide:
 #   - navigation         # Hide left navigation
@@ -87,17 +94,23 @@ theme:
 #   - 'theme.css'
 #   - 'pdf.css'
 
-# Extra links as icons at the bottom of the page
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/IBM/mcp-servers # TODO: Updated to correct github link.
-
 # External/Internal plugins.
 plugins:
   - include-markdown
   - search
   - privacy
+  - mermaid2
+
+# Markdown arguments and extensions.
+markdown_extensions:
+  # recommended config with materials theme
+  # https://mkdocs-mermaid2.readthedocs.io/en/latest/
+  - pymdownx.superfences:
+      # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
 
 # Configure the Markdown extensions for magic links
 # markdown_extensions:

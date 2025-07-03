@@ -3,27 +3,52 @@ INHERIT: ./base.yml
 
 # Project Information
 site_name: IBM MCP Servers
-site_url: "https://pages.github.com/ibm/mcp-servers/"
+site_url: "https://pages.github.com/IBM-Cloud/mcp/"
 site_description: "IBM MCP Servers Documentation"
 site_author: "Maxim Shelepov"
 
 # Repository Information
-repo_name: "ibm/mcp-servers" # TODO: Update to correct repo name.
-repo_url: "https://github.com/ibm/mcp-servers" # TODO: Update to correct repo url.
+repo_name: "IBM-Cloud/mcp"
+repo_url: "https://github.com/IBM-Cloud/mcp"
 
 # Main Site Navigation.
 nav:
-  - Welcome:
-    - index.md
-  - Servers:
-    - Core MCP Server: servers/core.md
-    - Serverless MCP Server: servers/serverless.md
-    - VPC MCP Server: servers/vpc.md
-    - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
-    - Cloud Automation MCP Server: servers/cloud-automation.md
-# Copyright
-copyright: Copyright (c) 2025 IBM Corporation. 
+  - Home: index.md
+  - Documentation:
+    - Overview: overview.md
+    - Servers:
+      - Core MCP Server: servers/core.md
+      - Serverless MCP Server: servers/serverless.md
+      - VPC MCP Server: servers/vpc.md
+      - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
+      - Cloud Automation MCP Server: servers/cloud-automation.md
 
+# Copyright
+copyright: Copyright (c) 2025 IBM Corporation.
+
+# Home Page Content.
+home_tagline: Enhance your LLM 🧠 with Tools 🛠️ from IBM Cloud ☁️
+home_description: |
+  With the help of the MCP protocol, a standardized protocol for LLM to external server communication, connect your client LLMs with the tools and capabilities you need provided by IBM cloud.
+home_video_demo_url: ./assets/DEMO_IBMCloud_MCP_for_VPC.mov
+
+home_button_text: Get Started &#10142;
+home_button_url: overview
+home_button_icon: .icons/octicons/octicons/arrow/right/16
+
+# Draft Pages.
+# Notes:
+# - To exclude from nav, comment out the page above in the "nav:" section.
+# draft_docs: |
+#   servers/core.md
+
+# Extra links as icons at the bottom of the page
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/IBM-Cloud/mcp
+
+### ------- FOR REFERENCE ------- ###
 # Theme settings
 # theme:
 #   language: en

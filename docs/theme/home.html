@@ -1,0 +1,142 @@
+<!-- Elements added to "home.html" will only be displayed on the home page -->
+
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+
+<!-- Homepage Stylesheet. -->
+<!-- External stylesheet does not have access to theme css vars. -->
+<!-- <link rel="stylesheet" href="./styles/home.css"> -->
+<style>
+  .main-home-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: calc(100vh - 20%);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 61rem;
+    padding: 0 .5rem;
+
+    /* variables. */
+    /* unique to recorded video demo background. */
+    --media-background-color: rgb(19, 23, 30);
+  }
+
+  .text-section-container {
+    padding: 3rem 0 0 0;
+  }
+
+  .text-content-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .text-content-container h1 {
+    color: inherit;
+    flex-wrap: wrap;
+    font-size: xx-large;
+    margin: 0;
+  }
+
+  .text-content-container p {
+    max-width: 60%;
+    color: inherit;
+    font-size: 0.7rem;
+  }
+
+  .media-background {
+    background-color: var(--media-background-color);
+    padding: 0.3rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    outline: 3px solid var(--md-primary-fg-color);
+    outline-offset: 2px;
+  }
+
+  .media {
+    width: 100%;
+    height: 100%;
+  }
+
+  .home-button-section-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .home-link-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--md-primary-fg-color);
+    width: fit-content;
+    font-size: medium;
+    color: var(--md-primary-bg-color);
+    border-radius: 0.5rem;
+  }
+
+  .home-link-button:focus:active {
+    outline: 2px solid var(--md-primary-fg-color);
+    outline-offset: 1px;
+  }
+
+  .home-link-button:hover {
+    background-color: var(--md-primary-fg-color--dark);
+  }
+</style>
+
+<!-- Custom Home Page. -->
+<div class="main-home-container">
+
+  <!-- Intro Text. -->
+  <div class="text-section-container">
+    <div class="text-content-container">
+      <h1>{{ config.home_tagline }}</h1>
+    </div>
+    <div class="text-content-container">
+      <p>{{ config.home_description }}</p>
+    </div>
+  </div>
+
+  <!-- Get Started Button. -->
+  <div class="home-button-section-container">
+    <a href="{{ config.home_button_url }}" class="home-link-button">
+      {{ config.home_button_text }}
+    </a>
+  </div>
+
+  <!-- Image Placeholder if needed. -->
+  <!-- <div class="image-container">
+    <div class="image-background">
+      <img src="./assets/temp-frame.png" style="width: 100%; height: 100%;" />
+    </div>
+  </div> -->
+
+  <!-- Video Demo. -->
+  <div class="media-background">
+    <video autoplay muted loop id="myVideo" class="media">
+      <source src="{{ config.home_video_demo_url }}">
+      Browser does not support video.
+    </video>
+  </div>
+
+  <!-- Attempt at an iframe if youtube or external embedding needed. -->
+  <!-- <iframe
+    style="width: 100%; height: 100%;"
+    src="https://www.youtube.com/embed/rHqk0ZGb6qo?si=4Gr5_0wmi2Y048lY&amp;controls=0&amp;autoplay=1&amp;mute=1"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe> -->
+</div>
+
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}
+  {{ super() }}
+{% endblock %}

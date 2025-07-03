@@ -1,6 +1,6 @@
 # IBM Cloud MCP Servers
 
-This project contains MCP Servers for IBM Cloud which provides an interface layer between AI assistants and IBM Cloud services. This README details how to install, build, configure, and run the MCP Server(s) for development and testing.
+This project contains MCP Servers for IBM Cloud which provide an interface layer between AI assistants and IBM Cloud services. This README details how to install, build, configure, and run the MCP Server(s) for development and testing.
 
 ## Overview
 
@@ -10,8 +10,8 @@ The core MCP server implementation for IBM Cloud is built directly into the IBM 
 
 There are two runtime scenarios supported:
 
-1. **Local install - Core MCP Server** - Configure any MCP Host Application (Claude, VSCode, Cursor, Cline, mcp-cli, etc.) to use IBM Cloud CLI as an MCP server.  This scenario involves installing the IBM Cloud CLI locally and then updating the host application's JSON MCP configuration settings to use the IBM Cloud CLI in MCP mode, using the stdio mcp transport.
-2. **Containerized MCP Servers** - Use the Containers provided in the `/src` dir to build fit-for-purpose containerized versions of the IBM Cloud MCP Server which can be deployed on any container runtime (podman, docker, IBM Cloud Code Engine, Redhat OpenShift, Kubernetes, etc.) to run as an MCP Remote server (HTTP transport).  This scenario involves building the container file, providinging environment variables to configure the appropriate tools to be exposed via MCP, and securely configuring the credentials to be used for the container. 
+1. **Local install - Core MCP Server** - Configure any MCP Host Application (e.g. Claude, VSCode, Cursor, Cline, mcp-cli) to use IBM Cloud CLI as an MCP server.  This scenario involves installing the IBM Cloud CLI locally and then updating the host application's JSON MCP configuration settings to use the IBM Cloud CLI in MCP mode and specifying `stdio` with the `--mcp-transport` parameter.
+2. **Containerized MCP Servers** - Use the Containers provided in the `/src` dir to build fit-for-purpose containerized versions of the IBM Cloud MCP Server which can be deployed on any container runtime (e.g. podman, docker, IBM Cloud Code Engine, Redhat OpenShift, Kubernetes) to run as an MCP Remote server (specify a valid HTTP SSE URL with the `--mcp-transport` parameter).  This scenario involves building the container file, providinging environment variables to configure the appropriate tools to be exposed via MCP, and securely configuring the credentials to be used for the container. 
 
 ## 💻 Local Install - Core MCP Server and Plugin Modules
 
@@ -27,7 +27,7 @@ If you already have the IBM Cloud CLI installed, check to see if MCP features ar
 ibmcloud --help
 ```
 
-If you already have MCP features, you will see the following section near the bottom of the output:
+If you already have the MCP feature, you will see the following section near the bottom of the output:
 
 ```text
 MCP OPTIONS:
@@ -36,14 +36,14 @@ MCP OPTIONS:
   --mcp-allow-write    [EXPERIMENTAL] Allows write operations for tasks such as creating a resource.
 ```
 
-If you don't have MCP features, update with:
+If you don't have the MCP feature, update with:
 
 ```sh
 ibmcloud update
 ibmcloud --help
 ```
 
-Verify that the `MCP OPTIONS` are available and proceed with configuring your host application to use the IBM Cloud MCP Server (proceed to the `Usage` section below).
+Verify that the `MCP OPTIONS` are available as above and proceed with configuring your host application to use the IBM Cloud MCP Server (proceed to the `Usage` section below).
 
 ## 📦 Containerized IBMCloud MCP Servers
 
@@ -51,13 +51,13 @@ Containerfiles and Makefiles for building IBM Cloud MCP Server containers are lo
 
 >You can also use the IBM Cloud MCP Server Containerized installation instead of the Local Install steps in the previous section if you have `podman`, `docker` or similar container runtime installed locally.
 
-Get started using containized IBM Cloud MCP Servers with the [Core MCP Server](servers/core.md)
+Get started using containerized IBM Cloud MCP Servers with the [Core MCP Server](servers/core.md)
 
 ## 🤏🏻 Usage (Local Installs)
 
 1. Obtain an IBM Cloud **API key** with minimal permissions for testing.
 
-> This should preferably be a **service id** api-key rather than user api-key, to restrict access privileges to only areas of IBM Cloud that you will be testing with the MCP server. For the name of the service id, you can use the name of a fictional platform engineering agent like, “<your_initials>-network-engineer” or “<your_initials>-account-manager”.  Then create an access group that assigns your new service id with the restricted access permissions that you want to allow the simulated agent to use.  
+> This should preferably be a **service id** api-key rather than user api-key, to restrict access privileges to only areas of IBM Cloud that you will be testing with the MCP server. For the name of the service id, you can use the name of a fictional platform engineering agent like, “<your_initials>-network-engineer” or “<your_initials>-account-manager”.  Then create an access group that assigns your new service id with the restricted access permissions that you want to allow the simulated agent to use. For more information consult the [IBM Cloud documentation](https://cloud.ibm.com/docs/account?topic=account-serviceidapikeys&interface=ui).
 
 2. Find the path to your IBM Cloud CLI binary:
 
@@ -73,6 +73,8 @@ ibmcloud login --apikey <your-api-key>
 
 4. Set up a host app like [mcp-cli](https://github.com/IBM/mcp-cli) and configure the MCP json for the host app to point to the IBM Cloud CLI binary and allowed tools:
 
+> TIP: tool names follow the command namespaces in the IBM Cloud CLI. For example, the namespace `resource_groups` maps to the CLI command `ibmcloud resource groups`
+
 ```json
 {
   "mcpServers": {
@@ -80,7 +82,7 @@ ibmcloud login --apikey <your-api-key>
       "command": "/path/to/ibmcloud",  
       "args": [
         "--mcp-transport", "stdio",
-        "--mcp-tools", "resource_groups,target,COMMANDS_THAT_LIST_AND_VIEW_RESOURCES"
+        "--mcp-tools", "resource_groups,target,MORE COMMANDS HERE THAT LIST AND VIEW RESOURCES"
       ]
     }
   }
@@ -99,7 +101,7 @@ The default configuration of IBM Cloud MCP Server will run in **Safe Mode** whic
       "args": [
         "--mcp-transport", "stdio",
         "--mcp-allow-write",
-        "--mcp-tools", "resource_groups,target,COMMANDS_THAT_CREATE_UPDATE_OR_DELETE_RESOURCES"
+        "--mcp-tools", "resource_groups,target,ADD COMMANDS THAT CREATE UPDATE OR DELETE RESOURCES"
       ]
     }
   }
@@ -159,9 +161,9 @@ The IBM Cloud MCP features have been used successfully with the following MCP-co
 
 ## 🚨 Important Security Considerations 🚨
 
-There are common security vulnerabilities which also apply when using MCP that you should mitigate appropriately:
+There are common security vulnerabilities which also apply when using MCP that you should mitigate appropriately. For example:
 
-- Follow principle of **least priviledge**:  When configuring access policies for the service identity/IBMCLOUD_API_KEY, mitigate attacks by ensuring that your agents/host applications and MCP servers can only access resources that are allowed for the agent’s responsibility and no more.
+- Follow the principle of **least priviledge**:  When configuring access policies for the service identity/IBMCLOUD_API_KEY, mitigate attacks by ensuring that your agents/host applications and MCP servers can only access resources that are allowed for the agent’s responsibility and no more.
 
 - **Zero trust**: Secure your MCP server software supply chain--only use MCP servers from trusted sources (mitigate where possible with standards like CycloneDX SBOM)
 
@@ -179,4 +181,4 @@ There are common security vulnerabilities which also apply when using MCP that y
 
 ## 🗣️ Feedback
 
-We would love you hear your feedback on these new features through [Issues in this repo](https://github.com/IBM-Cloud/ibmcloud-mcp-server/issues).
+We would love to hear your feedback on these new features through [Issues in this repo](https://github.com/IBM-Cloud/ibmcloud-mcp-server/issues).
