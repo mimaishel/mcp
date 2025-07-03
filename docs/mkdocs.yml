@@ -3,13 +3,13 @@ INHERIT: ./base.yml
 
 # Project Information
 site_name: IBM MCP Servers
-site_url: "https://pages.github.com/IBM-Cloud/ibmcloud-mcp-servers/"
+site_url: "https://pages.github.com/IBM-Cloud/mcp/"
 site_description: "IBM MCP Servers Documentation"
 site_author: "Maxim Shelepov"
 
 # Repository Information
-repo_name: "IBM-Cloud/ibmcloud-mcp-server"
-repo_url: "https://github.com/IBM-Cloud/ibmcloud-mcp-server"
+repo_name: "IBM-Cloud/mcp"
+repo_url: "https://github.com/IBM-Cloud/mcp"
 
 # Main Site Navigation.
 nav:
@@ -41,6 +41,12 @@ home_button_icon: .icons/octicons/octicons/arrow/right/16
 # - To exclude from nav, comment out the page above in the "nav:" section.
 # draft_docs: |
 #   servers/core.md
+
+# Extra links as icons at the bottom of the page
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/IBM-Cloud/mcp
 
 ### ------- FOR REFERENCE ------- ###
 # Theme settings

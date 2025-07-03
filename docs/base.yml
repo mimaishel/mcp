@@ -94,12 +94,6 @@ theme:
 #   - 'theme.css'
 #   - 'pdf.css'
 
-# Extra links as icons at the bottom of the page
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/IBM-Cloud/ibmcloud-mcp-server
-
 # External/Internal plugins.
 plugins:
   - include-markdown
