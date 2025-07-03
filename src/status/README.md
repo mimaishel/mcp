@@ -47,7 +47,7 @@ Here are some prompts that you can use to get IBM Cloud status entries:
 ![recent status updates](images/status1.png)
 - 🗣️ tell me more about the incident in dal
 ![dal incident details](images/status2.png)
-- 🗣️ Show status updates from the prior monty
+- 🗣️ Show status updates from the prior month
 ![prior month status listing](images/status3.png)
 - 🗣️ Show details of entry 8
 ![details of entry #8](images/status4.png)
