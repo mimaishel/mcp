@@ -4,10 +4,10 @@
 {% block tabs %}
 {{ super() }}
 
-<div>
+<div class="custom-home-container">
   <link rel="stylesheet" href="./styles/home.css">
 
-  <div class="vid-container">
+  <div class="main-home-container">
     <div class="text-section-container">
       <div class="text-content-container">
         <h1>Enhance your LLM 🧠 with Tools 🛠️ from IBM Cloud ☁️</h1>
@@ -17,14 +17,16 @@
         <p>With the help of the MCP protocol, a standardized protocol for LLM to external server communication, connect your client LLMs with the tools and capabilities you need provided by IBM cloud.</p>
       </div>
     </div>
-    <div class="image-container">
+    <!-- <div class="image-container">
       <div class="image-background">
         <img src="./assets/temp-frame.png" style="width: 100%; height: 100%;" />
       </div>
+    </div> -->
+    <div class="media-background">
+      <video autoplay muted loop id="myVideo" style="width: 100%; height: 100%;">
+        <source src="./assets/DEMO_IBMCloud_MCP_for_VPC.mov">
+      </video>
     </div>
-    <!-- <video autoplay muted loop id="myVideo" style="width: 100%; height: 100%;">
-      <source src="./assets/vid.mov">
-    </video> -->
     <!-- <iframe
       style="width: 100%; height: 100%;"
       src="https://www.youtube.com/embed/rHqk0ZGb6qo?si=4Gr5_0wmi2Y048lY&amp;controls=0&amp;autoplay=1&amp;mute=1"

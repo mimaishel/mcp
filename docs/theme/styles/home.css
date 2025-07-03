@@ -1,4 +1,8 @@
-  .vid-container {
+  /* .custom-home-container {
+    --image-outline-color: #2094f3;
+  } */
+
+  .main-home-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -34,18 +38,29 @@
     font-size: 0.7rem;
   }
 
-  .image-container {
-    padding: 0 5rem;
+  /* .image-container {
+    padding: 0 4.5rem;
+  } */
+  .media-container {
+    padding: 0 4.5rem;
   }
 
-  .image-background {
-    background-color: rgb(33, 33, 29);
+  .media-background {
+    background-color: rgb(19, 23, 30);
     padding: 0.3rem;
     border-radius: 0.5rem;
+    /* outline: 3px solid var(--image-outline-color);
+    outline-offset: 2px; */
   }
 
   /* .md-main, .md-main__inner {
     margin: 0;
     flex-grow: 0;
     height: 0;
+  } */
+
+  /* @media screen and (prefers-color-scheme: dark) {
+    .custom-home-container {
+      --image-outline-color: rgb(20, 21, 26);
+    }
   } */
