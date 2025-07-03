@@ -2,12 +2,12 @@
 
 This project provides a Model Context Protocol (MCP) server with tools for accessing IBM Cloud status via it's official RSS feed.
 
->Since there are no IBM Cloud CLI commands to get status, this server provides opml and MCP configuration files to configure the open source [buhe/mcp_rss](https://github.com/buhe/mcp_rss) RSS MCP Server.  
+>Since there are no IBM Cloud CLI commands to get status, this server provides opml and MCP configuration files to configure the open source [`buhe/mcp_rss`](https://github.com/buhe/mcp_rss) RSS MCP Server.  
 
 ## Limitations
 
-- **stdio ONLY**: The buhe/mcp_rss reader only supports MCP stdio transport at this time.
-- **MySQL ONLY**: The buhe/mcp_rss reader only supports MySQL database at this time.  SQLLite support may be added in the future for simpler installation with a single-file database.
+- **stdio ONLY**: The [`buhe/mcp_rss`](https://github.com/buhe/mcp_rss) reader only supports MCP stdio transport at this time.
+- **MySQL ONLY**: The [`buhe/mcp_rss`](https://github.com/buhe/mcp_rss) reader only supports MySQL database at this time.  SQLLite support may be added in the future for simpler installation with a single-file database.
 - **Local hosting ONLY**: Only local MCP Server configurations eg. for MCP host application like Claude Desktop or VS Code are provided at this time.  No Containerfiles are available for cloud deployment.
 
 ## ⚙️ Configurations
