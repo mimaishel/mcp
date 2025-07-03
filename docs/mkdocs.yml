@@ -26,6 +26,16 @@ nav:
 # Copyright
 copyright: Copyright (c) 2025 IBM Corporation.
 
+# Home Page Content.
+home_tagline: Enhance your LLM 🧠 with Tools 🛠️ from IBM Cloud ☁️
+home_description: |
+  With the help of the MCP protocol, a standardized protocol for LLM to external server communication, connect your client LLMs with the tools and capabilities you need provided by IBM cloud.
+home_video_demo_url: ./assets/DEMO_IBMCloud_MCP_for_VPC.mov
+
+home_button_text: Get Started &#10142;
+home_button_url: overview
+home_button_icon: .icons/octicons/octicons/arrow/right/16
+
 # Draft Pages.
 # Notes:
 # - To exclude from nav, comment out the page above in the "nav:" section.
