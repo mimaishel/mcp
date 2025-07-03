@@ -7,7 +7,7 @@
         "stdio",
 	"--mcp-allow-write",
         "--mcp-tools",
-        "assist,target,resource_groups,is_vpcs,is_instance,is_floating,is_image,is_catalog,is_key,is_virtual-network-interface,is_reservation,is_subnets,is_zone,is_region"
+        "assist,resource_groups,pi_d,pi_workspace,pi_image,pi_instance"
       ]
     }
   }

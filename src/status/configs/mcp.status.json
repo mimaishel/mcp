@@ -1,0 +1,8 @@
+{
+    "ibmcloud-status": {
+        "command": "npx","args": ["mcp_rss"],
+        "env": {
+            "OPML_FILE_PATH": "FULL_PATH_TO/configs/mcp-rss/IBMCloud.opml"
+        }
+    }
+}

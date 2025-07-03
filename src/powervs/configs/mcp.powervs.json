@@ -5,8 +5,9 @@
       "args": [
         "--mcp-transport",
         "stdio",
+	"--mcp-allow-write",
         "--mcp-tools",
-        "pi_d,pi_workspace,pi_image,pi_instance"
+        "assist,resource_groups,pi_d,pi_workspace,pi_image,pi_instance,pi_volume,pi_subnet,pi_network,pi_cloud-connect"
       ]
     }
   }
