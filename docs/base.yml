@@ -28,6 +28,7 @@ theme:
     - navigation.indexes
     - navigation.tabs
     # - navigation.tabs.sticky
+    - navigation.top
     - navigation.footer
     - navigation.instant
     - navigation.instant.progress
@@ -69,14 +70,14 @@ theme:
       primary: blue
       accent: blue
       toggle:
-        icon: material/toggle-switch
+        icon: material/lightbulb
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       accent: blue
       toggle:
-        icon: material/toggle-switch-off
+        icon: material/lightbulb-outline
         name: Switch to system preference
 
   font: false
