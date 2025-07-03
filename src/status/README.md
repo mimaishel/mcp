@@ -2,7 +2,7 @@
 
 This project provides a Model Context Protocol (MCP) server with tools for accessing IBM Cloud status via it's official RSS feed.
 
->Since there are no IBM Cloud CLI commands to get status, this server provides opml and MCP configuration files to configure the open source [`buhe/mcp_rss`](https://github.com/buhe/mcp_rss) RSS MCP Server.  
+>Since there are no IBM Cloud CLI commands to get status, the Cloud Status MCP server is provided as a simple opml and MCP configuration for the open source [`buhe/mcp_rss`](https://github.com/buhe/mcp_rss) RSS MCP Server.  
 
 ## Limitations
 
