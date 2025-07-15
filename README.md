@@ -59,33 +59,33 @@ Get started using containerized IBM Cloud MCP Servers with the [Core MCP Server]
   _This should preferably be a **service id** api-key rather than user api-key, to restrict access privileges to only areas of IBM Cloud that you will be testing with the MCP server. For the name of the service id, you can use the name of a fictional platform engineering agent like, “<your_initials>-network-engineer” or “<your_initials>-account-manager”.  Then create an access group that assigns your new service id with the restricted access permissions that you want to allow the simulated agent to use. For more information consult the [IBM Cloud documentation](https://cloud.ibm.com/docs/account?topic=account-serviceidapikeys&interface=ui)._
 2. Find the path to your IBM Cloud CLI binary:
 
-```bash
-where ibmcloud
-```
+    ```bash
+    where ibmcloud
+    ```
 
 3. Log in:
 
-```bash
-ibmcloud login --apikey <your-api-key>
-```
+    ```bash
+    ibmcloud login --apikey <your-api-key>
+    ```
 
 4. Set up a host app like [mcp-cli](https://github.com/IBM/mcp-cli) and configure the MCP json for the host app to point to the IBM Cloud CLI binary and allowed tools:
 
-> TIP: tool names follow the command namespaces in the IBM Cloud CLI. For example, the namespace `resource_groups` maps to the CLI command `ibmcloud resource groups`
+    > TIP: tool names follow the command namespaces in the IBM Cloud CLI. For example, the namespace `resource_groups` maps to the CLI command `ibmcloud resource groups`
 
-```json
-{
-  "mcpServers": {
-    "ibmcloud": {
-      "command": "/path/to/ibmcloud",  
-      "args": [
-        "--mcp-transport", "stdio",
-        "--mcp-tools", "resource_groups,target,MORE COMMANDS HERE THAT LIST AND VIEW RESOURCES"
-      ]
+    ```json
+    {
+      "mcpServers": {
+        "ibmcloud": {
+          "command": "/path/to/ibmcloud",  
+          "args": [
+            "--mcp-transport", "stdio",
+            "--mcp-tools", "resource_groups,target,MORE COMMANDS HERE THAT LIST AND VIEW RESOURCES"
+          ]
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 ## 🛡️ Safe mode -- Secure by default
 
