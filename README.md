@@ -69,7 +69,7 @@ Get started using containerized IBM Cloud MCP Servers with the [Core MCP Server]
     ibmcloud login --apikey <your-api-key>
     ```
 
-4. Set up a host app like [mcp-cli](https://github.com/IBM/mcp-cli) and configure the MCP json for the host app to point to the IBM Cloud CLI binary and allowed tools:
+4. Set up a host app like [mcp-cli](https://github.com/chrishayuk/mcp-cli) and configure the MCP json for the host app to point to the IBM Cloud CLI binary and allowed tools:
 
     > TIP: tool names follow the command namespaces in the IBM Cloud CLI. For example, the namespace `resource_groups` maps to the CLI command `ibmcloud resource groups`
 
@@ -134,7 +134,7 @@ MCP Server container configurations are provided for each each major IBM Cloud s
 ## Running mcp-cli
 
 1. Install `uv`: https://docs.astral.sh/uv/getting-started/installation/
-2. Install [mcp-cli](https://github.com/IBM/mcp-cli)
+2. Install [mcp-cli](https://github.com/chrishayuk/mcp-cli)
 3. Setup and run `mcp-cli`: Make sure it works with one of the basic MCP server examples and an LLM provider like OpenAI
 4. Edit `server_config.json` to include ibmcloud (see above examples).
 5. Restart `mcp-cli`.  Type `/tools`. The IBM Cloud tools you configured should be listed.
