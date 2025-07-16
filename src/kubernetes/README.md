@@ -6,7 +6,7 @@ This project provides a Model Context Protocol (MCP) server with tools for kuber
 
 The following example MCP configurations can be found in the `configs` folder to help get started with code engine use cases:
 
-- [mcp.ks.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/kubernetes/configs/mcp.code_engine_apps.json) - Tools commonly used when working with Kubernetes and OpenShift clusters
+- [mcp.ks.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/kubernetes/configs/mcp.ks.json) - Tools commonly used when working with Kubernetes and OpenShift clusters
 
 Each of the above configurations also includes the following essential tools:
 

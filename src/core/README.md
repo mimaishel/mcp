@@ -7,7 +7,7 @@ This project provides a Model Context Protocol (MCP) server for IBM Cloud core t
 The following example MCP configurations can be found in the `configs` folder to help get started with code engine use cases:
 
 - [mcp.all-tools.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.all-tools.json) - By not specifying an mcp-tools filter argument, *all* (1000+!) tools will be exposed to the mcp host application.  This can be useful for understanding the names.  However, the large number of tools will exceed the context window size of LLM's, so this config is only useful for debugging.
-- [mcp.account_catalog.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.account.json) - Tools commonly used when working with Accounts and Users
+- [mcp.account.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.account.json) - Tools commonly used when working with Accounts and Users
 - [mcp.catalog.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.catalog.json) - Tools for working with services and offerings in the IBM Cloud catalog.
 - [mcp.assist.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.assist.json) - Tool to invoke the IBM Cloud Assistant that has been trained on all the IBM Cloud documentation to answer IBM Cloud-specific questions.
 - [mcp.billing.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.billing.json) - Tools for querying billing and usage information for your accounts.
@@ -17,7 +17,7 @@ The following example MCP configurations can be found in the `configs` folder to
 - [mcp.iam-policy.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iam-policy.json) - Tools for working with Identity & Access Management (IAM) Policies.
 - [mcp.iam-service.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iam-service.json) - Tools for working with Identity & Access Management (IAM) Service Id's, Service groups and Service API Keys.
 - [mcp.iam-trusted-profile.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.iam-trusted-profile.json) - Tools for working with Identity & Access Management (IAM) Trusted Profiles.
-- [mcp.resource-manager.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.resource-manager.json) - Tools for with resources and resource groups, including creating service instances, account-wide resource searching, and resource quotas.
+- [mcp.resource_manager.json](https://github.com/IBM-Cloud/ibmcloud-mcp-server/blob/main/src/core/configs/mcp.resource_manager.json) - Tools for with resources and resource groups, including creating service instances, account-wide resource searching, and resource quotas.
 
 ## 🗣️ Prompts
 
