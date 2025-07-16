@@ -18,10 +18,10 @@ nav:
     - Overview: overview.md
     - Servers:
       - Core MCP Server: servers/core.md
-      - Serverless MCP Server: servers/serverless.md
-      - VPC MCP Server: servers/vpc.md
-      - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
-      - Cloud Automation MCP Server: servers/cloud-automation.md
+      # - Serverless MCP Server: servers/serverless.md
+      # - VPC MCP Server: servers/vpc.md
+      # - Kubernetes & OpenShift MCP Server: servers/kubernetes.md
+      # - Cloud Automation MCP Server: servers/cloud-automation.md
 
 # Copyright
 copyright: Copyright (c) 2025 IBM Corporation.
@@ -39,9 +39,11 @@ home_button_icon: .icons/octicons/octicons/arrow/right/16
 # Draft Pages.
 # Notes:
 # - To exclude from nav, comment out the page above in the "nav:" section.
-# draft_docs: |
-#   servers/core.md
-#   other/other.md
+draft_docs: |
+  servers/vpc.md
+  servers/kubernetes.md
+  servers/cloud-automation.md
+  servers/serverless.md
 
 # Extra links as icons at the bottom of the page
 extra:
